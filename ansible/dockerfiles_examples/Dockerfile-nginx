@@ -1,0 +1,5 @@
+FROM  stackbrew/debian:wheezy
+# Install nginx
+RUN apt-get install nginx -y
+# Expose nginx port
+EXPOSE 80

@@ -1,0 +1,10 @@
+# Log cloudinit generated log messages to file
+:syslogtag, isequal, "[CLOUDINIT]" /var/log/cloud-init.log
+
+# Log "eu-west-1.compute.internal" to file 
+:hostname, startswith, "ip-" /var/log/cloud-init.log
+
+# comment out the following line to allow CLOUDINIT messages through.
+# Doing so means you'll also get CLOUDINIT messages in /var/log/syslog
+& ~
+

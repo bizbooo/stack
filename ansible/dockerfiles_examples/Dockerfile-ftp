@@ -1,0 +1,16 @@
+FROM  sportaculous/java-base
+# Hack for initctl not being available in Ubuntu
+#RUN dpkg-divert --local --rename --add /sbin/initctl
+#RUN ln -s /bin/true /sbin/initctl
+
+# Install SFTP Server
+RUN mkdir /sporta
+RUN wget https://s3-eu-west-1.amazonaws.com/releases.sportaculous.com/sportaculous-upload-ftp-server-application-production-0.39.0.tar.gz
+RUN tar xvzf sportaculous-upload-ftp-server-application-production-0.39.0.tar.gz -C /sporta
+
+# Expose mongodb port
+EXPOSE 21
+
+WORKDIR /sporta/bin/linux64/
+# Launch mongodb
+ENTRYPOINT ["sh" ,"run.sh", "run"]

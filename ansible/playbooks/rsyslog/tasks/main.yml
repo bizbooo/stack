@@ -1,0 +1,35 @@
+---
+- hosts: testlhi0.sportaculous.com
+  remote_user: ubuntu
+  sudo: yes
+  tasks:
+  - name: Install rsyslog
+    apt: name=rsyslog state=present
+    sudo: True
+  
+  - name: Create /etc/default/rsyslog
+    copy: src=/etc/ansible/playbooks/rsyslog/files/rsyslog.default dest=/etc/default/rsyslog owner=root group=root mode=0644
+    notify: restart rsyslog
+
+  - name: Create /etc/rsyslog.d
+    file: path=/etc/rsyslog.d owner=root group=root state=directory
+    sudo: True
+
+  - name: Create /var/spool/rsyslog
+    file: path=/var/spool/rsyslog owner=syslog group=adm state=directory
+    sudo: True
+
+  #- name: Create rsyslog Main configuration file
+  #  template: src=/etc/ansible/playbooks/rsyslog/rsyslog.conf.j2 dest=/etc/rsyslog.conf owner=root group=root mode=0644
+  #  notify: restart rsyslog
+
+  #- name: Create rsyslog configuration file
+  #  template: src=/etc/ansible/playbooks/rsyslog/50-default.conf.j2 dest=/etc/rsyslog.d/50-default.conf owner=root group=root mode=0644
+  #  notify: restart rsyslog
+
+  - name: ensure running
+    service: name=rsyslog state=running
+
+  handlers:
+  - name: restart rsyslog
+    service: name=rsyslog state=running

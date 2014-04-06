@@ -1,0 +1,8 @@
+<% case @protocol -%>
+<% when "tcp" -%>
+*.* @@<%= @server %>:<%= node['rsyslog']['port'] %>
+<% when "udp" -%>
+*.* @<%= @server %>:<%= node['rsyslog']['port'] %>
+<% end -%>
+:syslogfacility-text, isequal, "local3" ~
+:syslogfacility-text, isequal, "local4" ~

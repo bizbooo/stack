@@ -1,0 +1,16 @@
+---
+- name: build Redis image
+  command: chdir="/etc/ansible/playbooks/stack_a/roles/docker-redis/files" docker build --tag="redis" . 
+  sudo: True
+  tags: redis
+
+- name: run Redis server
+  command: docker run -d --name="redis0" -p 6379:6379 redis 
+  sudo: True
+  tags: redis
+
+# Bug with docker-py V0.3.0
+# https://github.com/dotcloud/docker-py/issues/176
+#- name: build redis image
+#  docker_image: path="/etc/ansible/playbooks/stack_a/roles/docker-redis/files" name="stack/redis" tag="redis" state=present
+#  sudo: True

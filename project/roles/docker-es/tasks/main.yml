@@ -1,0 +1,16 @@
+---
+- name: build Elasticsearch(v1.1.0) image
+  command: chdir="/etc/ansible/playbooks/stack_a/roles/docker-es/files" docker build --tag="elasticsearch:1.1.0" .
+  sudo: True
+  tags: es
+
+- name: run Elasticsearch(v1.1.0) server
+  command: docker run -d --name="es0" -p 9200:9200 elasticsearch:1.1.0 
+  sudo: True
+  tags: es
+
+# Bug with docker-py V0.3.0
+# https://github.com/dotcloud/docker-py/issues/176
+#- name: build elasticsearch image
+#  docker_image: path="/etc/ansible/playbooks/stack_a/roles/docker-es/files" name="stack/elasticsearch-1.1.0" tag="1.1.0" state=present
+#  sudo: True

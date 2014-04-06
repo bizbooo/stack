@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+
+import os
+
+def get_directories( path , level , res = set() ):
+    if level == 0:
+        res.add( path )
+    else:
+        for file in os.listdir(path):
+            if os.path.isdir(path+"/"+file):
+                res |= get_directories(path+"/"+file, level - 1, res)
+    return res
+
+def delete_old_logs( root , nb ):
+    directories = get_directories(root,3)
+    size = len( directories )
+    for f in sorted(directories)[:size - nb]:
+        os.system("/usr/local/bin/s3cmd sync " + f + "/"+ " s3://log.sportaculous.com" + f + "/")
+        os.system( "rm -rf " + f )
+
+log_root = "<%= @log_dir  %>" # Must be an absolute path or S3 sync will fail
+nb_of_day_to_keep = <%= @nb_of_day_to_keep_log %>
+delete_old_logs( log_root , nb_of_day_to_keep )

@@ -1,0 +1,16 @@
+---
+- name: build Nginx image
+  command: chdir="/etc/ansible/playbooks/stack_a/roles/docker-nginx/files" docker build --tag="nginx" . 
+  sudo: True
+  tags: nginx
+
+- name: run Nginx server
+  command: docker run -d --name="nginx0" -p 80:80 nginx 
+  sudo: True
+  tags: nginx
+
+# Bug with docker-py V0.3.0
+# https://github.com/dotcloud/docker-py/issues/176
+#  command: docker run -d -p 80:80 nginx /etc/init.d/nginx star#- name: build nginx image
+#  docker_image: path="/etc/ansible/playbooks/stack_a/roles/docker-nginx/files" name="stack/nginx" tag="nginx" state=present
+#  sudo: True

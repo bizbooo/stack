@@ -1,0 +1,7 @@
+---
+logstash_owner: root
+logstash_group: root
+logstash_dir: /opt/logstash2
+logstash_etcdir: /opt/logstash2/etc
+logstash_bindir: /opt/logstash2/bin
+logstash_patterndir: /opt/logstash2/pattern

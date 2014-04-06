@@ -1,0 +1,169 @@
+/var/log/syslog
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/mail.info
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/mail.warn
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/mail.err
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/mail.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/daemon.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/kern.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/auth.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/user.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/lpr.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/cron.log
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/debug
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}
+/var/log/messages
+{
+	rotate 3
+	daily
+	size 10M
+	missingok
+	notifempty
+	delaycompress
+	compress
+	postrotate
+		reload rsyslog >/dev/null 2>&1 || true
+	endscript
+}

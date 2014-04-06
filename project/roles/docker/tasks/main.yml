@@ -1,0 +1,36 @@
+---
+- name: Install/Update python-pip
+  apt:  name=python-pip state=latest
+  sudo: True
+  tags: install
+
+- name: Install docker-py
+  pip:  name=docker-py state=latest
+  sudo: True
+  tags: install
+
+- name: Update apt source file
+  copy: src=docker-apt-source-file dest=/etc/apt/sources.list.d/docker.list mode=0644
+  sudo: True
+  tags: install
+
+- name: Add Docker GPG key
+  apt_key: url=https://get.docker.io/gpg
+  sudo: True
+  tags: install
+
+- name: Install docker
+  apt: pkg=lxc-docker state=latest update_cache=true
+  notify: start docker
+  sudo: True
+  tags: install
+
+- name: Delete Docker container
+  shell: for i in $(docker ps -a | cut -f 1 -d " " | grep -v CONTAINER);do docker rm -f $i ;done
+  sudo: True
+  tags: del-containers
+
+- name: Delete Docker images
+  shell: for i in $(docker images | awk  '{print $3}'| grep -v IMAGE);do docker rmi $i ;done
+  sudo: True
+  tags: del-images

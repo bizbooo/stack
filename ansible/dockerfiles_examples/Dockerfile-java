@@ -1,0 +1,14 @@
+FROM  stackbrew/debian:wheezy
+# Install wget
+RUN apt-get install wget
+# Create root java rep
+RUN mkdir /opt/java7/
+WORKDIR /opt/java7/
+# Get java archive
+RUN wget https://s3-eu-west-1.amazonaws.com/binary.sportaculous.com/jdk-7u45-linux-x64.tar.gz
+RUN tar xvzf jdk-7u45-linux-x64.tar.gz
+# Update java alternative 
+RUN update-alternatives --install /usr/bin/java java /opt/java7/jdk1.7.0_45/bin/java 1
+RUN update-alternatives --install /usr/bin/javac javac /opt/java7/jdk1.7.0_45/bin/javac 1
+RUN update-alternatives --set java /opt/jdk1.7.0_21/bin/java 
+RUN update-alternatives --set javac /opt/jdk1.7.0_21/bin/javac

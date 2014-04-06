@@ -1,0 +1,16 @@
+---
+- name: build MongoDB(v2.4.9) image
+  command: chdir="/etc/ansible/playbooks/stack_a/roles/docker-mongo/files" docker build --tag="mongodb:2.4.9" .
+  sudo: True
+  tags: mongo
+
+- name: run MongoDB(v2.4.9) server
+  command: docker run -d --name="mongo0" -p 27017:27017 mongodb:2.4.9 
+  sudo: True
+  tags: mongo
+
+# Bug with docker-py V0.3.0
+# https://github.com/dotcloud/docker-py/issues/176
+#- name: build mongodb image
+#  docker_image: path="/etc/ansible/playbooks/stack_a/roles/docker-mongo/files" name="stack/mongodb-2.4.9" tag="2.4.9" state=present
+#  sudo: True

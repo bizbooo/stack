@@ -1,0 +1,7 @@
+<% case @protocol -%>
+<% when "tcp" -%>
+*.* @@<%= @splunk_host %>:<%= @splunk_port %>;RSYSLOG_FileFormat
+<% when "udp" -%>
+*.* @<%= @splunk_host %>:<%= @splunk_port %>;RSYSLOG_FileFormat
+<% end -%>
+*.* @@logstash0.sportaculous.com:5544;RSYSLOG_FileFormat

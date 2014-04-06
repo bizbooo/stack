@@ -1,0 +1,17 @@
+FROM  sportaculous/java7
+
+# Install ES Server
+RUN apt-get install adduser -y --force-yes
+RUN mkdir /opt/elasticsearch
+WORKDIR /opt/elasticsearch/
+RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.0.deb --no-check-certificate
+RUN dpkg -i elasticsearch-1.1.0.deb
+
+# Install plugin
+RUN /usr/share/elasticsearch/bin/plugin -install karmi/elasticsearch-paramedic
+RUN /usr/share/elasticsearch/bin/plugin -install polyfractal/elasticsearch-inquisitor
+RUN /usr/share/elasticsearch/bin/plugin -install polyfractal/elasticsearch-segmentspy
+RUN /usr/share/elasticsearch/bin/plugin -install lukas-vlcek/bigdesk
+
+# Launch 
+ENTRYPOINT ["/usr/share/elasticsearch/bin/elasticsearch", "-f"]
