@@ -1,8 +1,7 @@
 ---
 # This playbook deploys a simple standalone JBoss server. 
 
-- hosts: testlhi0.sportaculous.com
-  user: ubuntu
+- user: ubuntu
 
   roles:
     - docker
