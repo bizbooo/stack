@@ -19,8 +19,10 @@ Then run the playbook, like this:
 	ansible-playbook -i hosts site.yml
 
 - Tag Deploy  
-  Mongodb : ansible-playbook -i hosts site.yml --tags mongo
-  ...
+  - Mongodb : ansible-playbook -i hosts site.yml --tags mongo
+  - Redis : ansible-playbook -i hosts site.yml --tags redis
+  - Elasticsearch : ansible-playbook -i hosts site.yml --tags es
+  - Nginx : ansible-playbook -i hosts site.yml --tags nginx
 
 ### Docker Commands :
 - Show build images :
