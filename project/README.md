@@ -10,7 +10,7 @@ These playbooks deploy a very basic stack in docker containers :
 - Redis in docker container
 - Uwsgi in docker container
 
-### Deploy :
+### Deploy 
 To use them, first edit the "hosts" inventory file to contain the
 hostnames of the machines on which you want to deploy,
 
@@ -24,10 +24,14 @@ Then run the playbook, like this:
   - Elasticsearch : ansible-playbook -i hosts site.yml --tags es
   - Nginx : ansible-playbook -i hosts site.yml --tags nginx
 
-### Docker Commands :
+### Docker Commands 
 - Show build images :
   sudo docker images
 - Show running container :
   sudo docker ps 
 - Show stopped container : 
   sudo docker ps -a 
+
+### Resources 
+- http://docs.ansible.com/
+- https://docs.docker.io/en/latest/
