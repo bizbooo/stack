@@ -22,7 +22,7 @@ Then run the playbook, like this:
   Elasticsearch : ansible-playbook -i hosts site.yml --tags es
   ...
 
-# Docker Commands :
+### Docker Commands :
 - Show build images :
   sudo docker images
 - Show running container :
