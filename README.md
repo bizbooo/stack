@@ -10,6 +10,7 @@ These playbooks deploy a very basic stack in docker containers :
 - Redis in docker container
 - Uwsgi in docker container
 
+### Deploy :
 To use them, first edit the "hosts" inventory file to contain the
 hostnames of the machines on which you want to deploy,
 
