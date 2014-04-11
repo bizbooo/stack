@@ -15,12 +15,11 @@ To use them, first edit the "hosts" inventory file to contain the
 hostnames of the machines on which you want to deploy,
 
 Then run the playbook, like this:
-- Full Deploy :
+- Full Deploy 
 	ansible-playbook -i hosts site.yml
 
-- Tag Deploy : 
+- Tag Deploy  
   Mongodb : ansible-playbook -i hosts site.yml --tags mongo
-  Elasticsearch : ansible-playbook -i hosts site.yml --tags es
   ...
 
 ### Docker Commands :
